@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { GithubLogo, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
+import { GithubLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +33,7 @@ const Contact: React.FC = () => {
   }, []);
 
   return (
-    <section id="contact" className="contact-section py-32 bg-gradient-to-b from-black to-gray-900">
+    <section id="contact" className="contact-section py-32 bg-transparent">
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="contact-title text-4xl md:text-5xl font-light text-white text-center mb-16">
           Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-spline-white to-spline-grey">Touch</span>
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
             {[
               { icon: <GithubLogo size={24} />, href: 'https://github.com/isthatpratham', label: 'GitHub' },
               { icon: <LinkedinLogo size={24} />, href: 'https://www.linkedin.com/in/pratham-debnath-894471314/', label: 'LinkedIn' },
-              { icon: <TwitterLogo size={24} />, href: 'https://x.com/prathamfrsure', label: 'Twitter' },
+              { icon: <InstagramLogo size={24} />, href: 'https://www.instagram.com/prathamfrsure/', label: 'Instagram' },
               {
                 icon: (
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -62,16 +62,17 @@ const Contact: React.FC = () => {
                 href: 'https://leetcode.com/u/prathamfrsure/',
                 label: 'LeetCode'
               }
-            ].map(social => (
-              <a
-                key={social.label}
-                href={social.href}
-                className="social-icon bg-white/5 backdrop-blur-sm border border-white/10 rounded-full p-4 text-gray-400 hover:text-spline-light-grey hover:border-white/30 hover:bg-white/5 transition-all duration-300"
-                aria-label={social.label}
-              >
-                {social.icon}
-              </a>
-            ))}
+            ]
+              .map(social => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="social-icon bg-white/5 backdrop-blur-sm border border-white/10 rounded-full p-4 text-gray-400 hover:text-spline-light-grey hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </a>
+              ))}
           </div>
         </div>
       </div>

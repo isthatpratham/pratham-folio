@@ -37,21 +37,8 @@ const Footer: React.FC = () => {
   const navItems = ['Home', 'About', 'Journey', 'Projects', 'Contact'];
 
   return (
-    <footer className="footer-section relative py-16 bg-black overflow-hidden">
-      {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="particle absolute w-2 h-2 bg-white/10 rounded-full blur-sm"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`
-            }}
-          />
-        ))}
-      </div>
+    <footer className="footer-section relative py-16 bg-transparent overflow-hidden">
+      {/* Background atmosphere is global in App.tsx */}
 
       <div className="footer-content max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">

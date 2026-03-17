@@ -1,8 +1,20 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Code, Palette, Globe, Cpu, Database, Sparkle } from '@phosphor-icons/react';
-import prathamImage from '../images/pratham.jpg';
+import {
+  Code,
+  Terminal,
+  LinkedinLogo,
+  GithubLogo,
+  Cpu,
+  Globe,
+  Database,
+  ShieldCheck,
+  Buildings,
+  Wrench,
+  Sparkle,
+  Cloud
+} from '@phosphor-icons/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,132 +29,212 @@ const About: React.FC = () => {
       }
     });
 
-    tl.fromTo('.about-content',
-      { opacity: 0, y: 60, filter: 'blur(10px)' },
-      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, ease: 'power2.out' }
+    tl.fromTo('.about-intro',
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
     )
-    .fromTo('.about-image',
-      { opacity: 0, x: -50, scale: 0.8 },
-      { opacity: 1, x: 0, scale: 1, duration: 1, ease: 'power2.out' }, '-=0.8'
-    )
-    .fromTo('.terminal-line',
-      { opacity: 0, x: -20 },
-      { 
-        opacity: 1, 
-        x: 0, 
-        duration: 0.6, 
-        ease: 'power2.out',
-        stagger: 0.2 
-      }, '-=0.5'
-    );
-
-    // Profile image hover effect
-    const profileImage = document.querySelector('.profile-image');
-    profileImage?.addEventListener('mouseenter', () => {
-      gsap.to(profileImage, { 
-        scale: 1.05, 
-        rotateY: 5, 
-        duration: 0.5, 
-        ease: 'power2.out' 
-      });
-    });
-    profileImage?.addEventListener('mouseleave', () => {
-      gsap.to(profileImage, { 
-        scale: 1, 
-        rotateY: 0, 
-        duration: 0.5, 
-        ease: 'power2.out' 
-      });
-    });
+      .fromTo('.terminal-container',
+        { opacity: 0, scale: 0.95 },
+        { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' }, '-=0.4'
+      )
+      .fromTo('.building-section',
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.6'
+      )
+      .fromTo('.tech-category',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' }, '-=0.4'
+      );
   }, []);
 
+  const techStack = [
+    {
+      category: 'Languages',
+      icon: <Code size={24} className="text-white/40" />,
+      items: ['C++', 'JavaScript', 'TypeScript', 'Java', 'Python', 'PHP']
+    },
+    {
+      category: 'Backend',
+      icon: <Terminal size={24} className="text-white/40" />,
+      items: ['Node.js', 'NestJS', 'Express', 'Django']
+    },
+    {
+      category: 'Frontend',
+      icon: <Globe size={24} className="text-white/40" />,
+      items: ['React', 'Next.js', 'Redux', 'HTML', 'CSS', 'Tailwind']
+    },
+    {
+      category: 'Databases',
+      icon: <Database size={24} className="text-white/40" />,
+      items: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase', 'Redis']
+    },
+    {
+      category: 'Infrastructure',
+      icon: <Cloud size={24} className="text-white/40" />,
+      items: ['AWS', 'Google Cloud', 'Cloudflare', 'Docker']
+    },
+    {
+      category: 'Security & Auth',
+      icon: <ShieldCheck size={24} className="text-white/40" />,
+      items: ['Clerk']
+    },
+    {
+      category: 'Tools',
+      icon: <Wrench size={24} className="text-white/40" />,
+      items: ['Git', 'Prisma', 'Postman', 'Razorpay', 'Stripe', 'Nginx']
+    },
+    {
+      category: 'AI & Observability',
+      icon: <Sparkle size={24} className="text-white/40" />,
+      items: ['Claude', 'LangChain', 'Sentry', 'Grafana']
+    }
+  ];
+
   return (
-    <section id="about" className="about-section py-32 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Profile Image */}
-          <div className="about-image flex justify-center lg:justify-start">
-            <div className="relative">
-              <div className="profile-image w-80 h-80 rounded-full bg-gradient-to-br from-white/10 to-gray-500/10 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
-                <img 
-                  src={prathamImage} 
-                  alt="Pratham"
-                  className="w-72 h-72 rounded-full object-cover"
-                />
+    <section id="about" className="about-section py-32 bg-transparent relative overflow-hidden">
+      {/* Background atmosphere is global in App.tsx */}
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-12">
+
+        {/* Intro Header */}
+        <div className="about-intro mb-20 text-center mx-auto max-w-4xl">
+          <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-6">
+            About <span className="hero-name-gradient">Me!</span>
+          </h2>
+          <h3 className="text-xl md:text-2xl text-white/70 font-medium mb-8">
+            Full-Stack Developer at <a href="https://sanvyahealth.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:underline transition-all">Sanvya</a> <span className="text-white/20 mx-2">|</span> MCA @ <a href="https://maps.app.goo.gl/2ybd8AECoAHujwsY7" target="_blank" rel="noopener noreferrer" className="text-white hover:underline transition-all">SRMIST</a>
+          </h3>
+
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-12">
+
+          {/* Left Side: Bio & Terminal */}
+          <div className="lg:col-span-2 space-y-12">
+
+            {/* Terminal Bio Block */}
+            <div className="terminal-container p-[1px] rounded-2xl bg-gradient-to-br from-white/10 to-transparent">
+              <div className="bg-[#0A0A0A] rounded-2xl p-6 font-mono text-sm leading-relaxed border border-white/5 shadow-2xl">
+                <div className="flex space-x-2 mb-6 opacity-40">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                </div>
+
+                <div className="space-y-4">
+                  <p className="text-white/40"># whoami</p>
+                  <ul className="space-y-3 text-white/80">
+                    <li className="flex items-start">
+                      <span className="text-white/30 mr-3">❯</span>
+                      Full-Stack Developer at Sanvya
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-white/30 mr-3">❯</span>
+                      MCA Student SRMIST, Chennai
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-white/30 mr-3">❯</span>
+                      BCA Graduate from DHSK College, Dibrugarh, Assam
+                    </li>
+                    <li className="flex items-start text-white/50 italic">
+                      "Building scalable backend systems and high-performance apps"
+                    </li>
+                  </ul>
+
+                  <div className="pt-4 mt-4 border-t border-white/5 space-y-4">
+                    <p className="text-white/40"># connect</p>
+                    <div className="flex flex-wrap gap-4">
+                      <a href="https://github.com/isthatpratham" target="_blank" className="flex items-center space-x-2 text-white/60 hover:text-white transition-colors">
+                        <GithubLogo size={20} />
+                        <span>GitHub</span>
+                      </a>
+                      <a href="https://www.linkedin.com/in/pratham-debnath-894471314/" target="_blank" className="flex items-center space-x-2 text-white/60 hover:text-white transition-colors">
+                        <LinkedinLogo size={20} />
+                        <span>LinkedIn</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/15 to-gray-500/15 blur-xl -z-10"></div>
             </div>
+
+            {/* Quote at the bottom of left side on desktop, but we'll place it at the absolute bottom later */}
           </div>
-          
-          {/* Terminal Content */}
-          <div className="about-content">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-8">
-              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-spline-white to-spline-grey">Me</span>
-            </h2>
-            
-            {/* Terminal Window */}
-            <div className="bg-gray-900 border border-gray-700 rounded-lg p-6 font-mono text-base">
-              {/* Terminal Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+
+          {/* Right Side: Building & Tech */}
+          <div className="lg:col-span-3 space-y-16">
+
+            {/* What I'm Currently Building */}
+            <div className="building-section">
+              <div className="flex items-center space-x-4 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                  <Buildings size={24} className="text-white" />
                 </div>
-                <div className="text-green-400 text-sm">prathamfrsure</div>
+                <h4 className="text-2xl font-bold text-white">What I'm Currently Building</h4>
               </div>
-              
-              {/* Terminal Content - Scrollable */}
-              <div className="space-y-6 max-h-96 overflow-y-auto pr-2" style={{
-                scrollbarWidth: 'thin',
-                scrollbarColor: '#4B5563 #1F2937'
-              }}>
-                {/* whoami command */}
-                <div className="terminal-line">
-                  <div className="text-green-400 text-lg font-medium">$ whoami</div>
-                  <div className="text-gray-300 ml-4 mt-3 text-base leading-relaxed">
-                    I'm Pratham Debnath, 22, a software developer and MCA student from Margherita, India.
-                    I've been into computers for as long as I can remember, and now I'm diving deeper into web dev and AI to turn that curiosity into something real.
-                  </div>
+
+              <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 backdrop-blur-sm">
+                <div className="mb-6">
+                  <h5 className="text-xl font-semibold text-white mb-2"><a href="https://sanvyahealth.com/" target="_blank" rel="noopener noreferrer" className="hover:underline transition-all">Sanvya</a> – Healthcare Infrastructure Platform</h5>
+                  <p className="text-white/40 text-sm">Working on enterprise-grade hospital management systems.</p>
                 </div>
-                
-                {/* ls skills command */}
-                <div className="terminal-line">
-                  <div className="text-green-400 text-lg font-medium">$ ls skills</div>
-                  <div className="text-gray-300 ml-4 mt-3 text-base leading-relaxed">
-                    freelance video editing, web/app development, adapting to new tech fast,
-                    problem-solving, storytelling
-                  </div>
-                </div>
-                
-                {/* cat tech_specs.txt command */}
-                <div className="terminal-line">
-                  <div className="text-green-400 text-lg font-medium">$ cat tech_specs.txt</div>
-                  <div className="text-gray-300 ml-4 mt-3 space-y-2 text-base leading-relaxed">
-                    <div><span className="text-orange-400 font-medium">OS:</span> Windows (as usual)</div>
-                    <div><span className="text-orange-400 font-medium">Editor:</span> VS Code or Helix (depends on my mood)</div>
-                    <div><span className="text-orange-400 font-medium">Languages:</span> Python, JavaScript, PHP (adding more soon)</div>
-                    <div><span className="text-orange-400 font-medium">Frameworks:</span> React, Next.js, Vite, Tailwind, Node.js, Django</div>
-                    <div><span className="text-orange-400 font-medium">Animations:</span> GSAP, Anime.js</div>
-                    <div><span className="text-orange-400 font-medium">Tools:</span> Git, MySQL, Docker, Nmap, Figma, Notion, OpenAI API, Supabase</div>
-                  </div>
-                </div>
-                
-                {/* cat contact.txt command */}
-                <div className="terminal-line">
-                  <div className="text-green-400 text-lg font-medium">$ cat contact.txt</div>
-                  <div className="text-gray-300 ml-4 mt-3 space-y-2 text-base leading-relaxed">
-                    <div><span className="text-orange-400 font-medium">Email:</span> premdebnath08@gmail.com</div>
-                    <div><span className="text-orange-400 font-medium">GitHub:</span> github.com/prathamfrsure</div>
-                    <div><span className="text-orange-400 font-medium">LinkedIn:</span> linkedin.com/in/pratham</div>
-                    <div><span className="text-orange-400 font-medium">Twitter:</span> twitter.com/prathamfrsure</div>
-                  </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    'Patient Admission & Discharge',
+                    'IPD / OPD Management',
+                    'Billing & Payment Gateways',
+                    'Hospital Workflow Automation',
+                    'WhatsApp Communication',
+                    'Lab & Radiology Integrations'
+                  ].map((item) => (
+                    <div key={item} className="flex items-center space-x-3 text-white/70">
+                      <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+                      <span className="text-sm font-light">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
+
+            {/* Technologies Grid */}
+            <div>
+              <div className="flex items-center space-x-4 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                  <Cpu size={24} className="text-white" />
+                </div>
+                <h4 className="text-2xl font-bold text-white">Technologies I Use</h4>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {techStack.map((category) => (
+                  <div key={category.category} className="tech-category p-6 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.04] transition-all duration-300">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm font-semibold text-white/90">{category.category}</span>
+                      {category.icon}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {category.items.map(item => (
+                        <span key={item} className="text-[11px] px-2 py-0.5 rounded bg-white/5 text-white/40 border border-white/5">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
+
+        {/* Closing Quote */}
+        <div className="mt-32 text-center border-t border-white/5 pt-12">
+          <p className="text-white text-sm font-bold italic tracking-wide">
+            “The more time you spend in tech, the more urge you have to buy a farm and never touch a computer again.”
+          </p>
+        </div>
+
       </div>
     </section>
   );
