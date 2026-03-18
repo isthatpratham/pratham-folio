@@ -3,13 +3,16 @@ import { X, FilmStrip, GitBranch, Scissors, MagicWand, Target, ChartLineUp, Time
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { editorProjects, EditorProject } from '../data/editorProjects';
+import { optimizeExternalLink } from '../utils/videoUtils';
+
 import showreelThumb from '../images/showreel_thumb.png';
-import projectCar from '../images/project_car.png';
-import projectPortrait from '../images/project_portrait.png';
-import projectUrban from '../images/project_urban.png';
-import clientEnergy from '../images/client_energy.png';
-import clientCreator from '../images/client_creator.png';
-import clientTech from '../images/client_tech.png';
+import logoMaz from '../images/maz-fashion.jpg';
+import logoVulncon from '../images/vulcnon.jpg';
+import logoFairexpay from '../images/fairexpay.jpg';
+import logoOnecore from '../images/onecore-global.jpg';
+import logoYellowdude from '../images/yellowdude.jpg';
+import logoTea from '../images/sustainable_tea_with_shreaya.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,31 +23,15 @@ interface Client {
 }
 
 const TRUSTED_CLIENTS: Client[] = [
-    { id: 1, name: 'Red Bull', logo: clientEnergy },
-    { id: 2, name: 'Peter McKinnon', logo: clientCreator },
-    { id: 3, name: 'Adobe', logo: clientTech },
-    { id: 4, name: 'Nike', logo: clientEnergy },
-    { id: 5, name: 'MrBeast', logo: clientCreator },
-    { id: 6, name: 'Sony', logo: clientTech },
+    { id: 1, name: 'Maz Fashion', logo: logoMaz },
+    { id: 2, name: 'VulnCon', logo: logoVulncon },
+    { id: 3, name: 'FairExPay', logo: logoFairexpay },
+    { id: 4, name: 'OneCore Global', logo: logoOnecore },
+    { id: 5, name: 'YellowDude', logo: logoYellowdude },
+    { id: 6, name: 'Sustainable Tea', logo: logoTea },
 ];
 
-interface Project {
-    id: number;
-    title: string;
-    label: string;
-    category: 'Reels' | 'Cinematic' | 'Client Work';
-    thumbnail: string;
-    videoUrl: string;
-}
-
-const PROJECTS: Project[] = [
-    { id: 1, title: 'Neon Night', label: 'Music Video', category: 'Cinematic', thumbnail: projectUrban, videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-    { id: 2, title: 'Street Soul', label: 'Documentary', category: 'Cinematic', thumbnail: projectPortrait, videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-    { id: 3, title: 'Urban Velocity', label: 'Automotive', category: 'Client Work', thumbnail: projectCar, videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-    { id: 4, title: 'Midnight Pulse', label: 'Commercial', category: 'Client Work', thumbnail: projectUrban, videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-    { id: 5, title: 'Studio Sessions', label: 'Artist Profile', category: 'Reels', thumbnail: projectPortrait, videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-    { id: 6, title: 'The Drift', label: 'Action Short', category: 'Reels', thumbnail: projectCar, videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-];
+// PROJECTS moved to src/data/editorProjects.ts
 
 const STAT_DATA = [
     { label: 'Views Generated', value: 100000, suffix: '+', description: 'Across all client channels' },
@@ -69,12 +56,12 @@ const WHY_CHOOSE_ME = [
 
 const Editor: React.FC = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-    const [activeFilter, setActiveFilter] = useState<'All' | 'Reels' | 'Cinematic' | 'Client Work'>('All');
+    const [selectedProject, setSelectedProject] = useState<EditorProject | null>(null);
+    const [activeFilter, setActiveFilter] = useState<'All' | 'Explainers' | 'Shorts' | 'Client Work'>('All');
 
     const filteredProjects = activeFilter === 'All'
-        ? PROJECTS
-        : PROJECTS.filter(p => p.category === activeFilter);
+        ? editorProjects
+        : editorProjects.filter(p => p.category === activeFilter);
 
     useEffect(() => {
         // Scroll animations for sections
@@ -221,7 +208,7 @@ const Editor: React.FC = () => {
                         <p className="text-white/40 text-lg">A collection of cinematic narratives and visual experiments.</p>
                     </div>
                     <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md">
-                        {['All', 'Reels', 'Cinematic', 'Client Work'].map((filter) => (
+                        {['All', 'Explainers', 'Shorts', 'Client Work'].map((filter) => (
                             <button
                                 key={filter}
                                 onClick={() => setActiveFilter(filter as any)}
@@ -241,7 +228,14 @@ const Editor: React.FC = () => {
                         <div
                             key={project.id}
                             className="group relative aspect-[16/10] rounded-2xl overflow-hidden cursor-pointer border border-white/5 bg-white/5 transition-all duration-500 hover:border-white/20 animate-in fade-in zoom-in-95"
-                            onClick={() => setSelectedProject(project)}
+                            onClick={() => {
+                                if (project.type === 'youtube' || project.type === 'local') {
+                                    setSelectedProject(project);
+                                } else if (project.type === 'external' && project.externalUrl) {
+                                    const optimizedUrl = optimizeExternalLink(project.externalUrl);
+                                    window.open(optimizedUrl, '_blank', 'noopener,noreferrer');
+                                }
+                            }}
                         >
                             <img
                                 src={project.thumbnail}
@@ -250,7 +244,7 @@ const Editor: React.FC = () => {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8">
                                 <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                    <p className="text-white/40 text-[10px] font-bold tracking-[.3em] uppercase mb-2">{project.label}</p>
+                                    <p className="text-white/40 text-[10px] font-bold tracking-[.3em] uppercase mb-2">{project.category}</p>
                                     <h3 className="text-xl font-bold text-white transition-colors">{project.title}</h3>
                                 </div>
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -270,21 +264,21 @@ const Editor: React.FC = () => {
                     <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4 text-glow">Trusted By</h2>
                     <p className="text-white/40 text-lg">Creators and brands who trust my editing</p>
                 </div>
-                <div className="relative flex overflow-hidden">
-                    <div className="py-8 animate-marquee whitespace-nowrap flex items-center">
-                        {[...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS].map((client, index) => (
+                <div className="w-full overflow-hidden relative">
+                    <div className="flex animate-marquee-infinite py-4">
+                        {[...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS].map((client, index) => (
                             <div
                                 key={`${client.id}-${index}`}
-                                className="mx-12 group flex flex-col items-center justify-center transition-all duration-500 hover:scale-110"
+                                className="mx-6 md:mx-10 group flex flex-col items-center justify-center transition-all duration-500"
                             >
-                                <div className="w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center transition-all duration-500 group-hover:bg-white/5 group-hover:brightness-125">
+                                <div className="w-24 h-24 md:w-32 md:h-32 p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10 group-hover:border-white/20 group-hover:brightness-125 shadow-xl">
                                     <img
                                         src={client.logo}
                                         alt={client.name}
-                                        className="w-12 h-12 md:w-16 md:h-16 object-contain opacity-40 group-hover:opacity-100 transition-all filter grayscale group-hover:grayscale-0"
+                                        className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-all filter grayscale group-hover:grayscale-0 brightness-110 contrast-110"
                                     />
                                 </div>
-                                <span className="mt-4 text-[10px] uppercase tracking-[0.2em] font-bold text-white/10 group-hover:text-white/60 transition-colors">
+                                <span className="mt-4 text-[10px] uppercase tracking-[0.2em] font-bold text-white/20 group-hover:text-white/60 transition-colors">
                                     {client.name}
                                 </span>
                             </div>
@@ -374,13 +368,25 @@ const Editor: React.FC = () => {
                         onClick={() => setSelectedProject(null)}
                     ></div>
                     <div className="relative w-full max-w-6xl aspect-video rounded-3xl overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 bg-black z-10 animate-in zoom-in-95 duration-500">
-                        <iframe
-                            src={selectedProject ? `${selectedProject.videoUrl}?autoplay=1&rel=0` : ''}
-                            title={selectedProject?.title || 'Video Player'}
-                            className="w-full h-full"
-                            allow="autoplay; encrypted-media"
-                            allowFullScreen
-                        ></iframe>
+                        {selectedProject?.type === 'youtube' ? (
+                            <iframe
+                                src={`https://www.youtube.com/embed/${selectedProject.videoId}?autoplay=1&rel=0`}
+                                title={selectedProject?.title || 'Video Player'}
+                                className="w-full h-full"
+                                allow="autoplay; encrypted-media"
+                                allowFullScreen
+                            ></iframe>
+                        ) : selectedProject?.type === 'local' ? (
+                            <video
+                                src={selectedProject.videoSrc}
+                                poster={selectedProject.thumbnail}
+                                controls
+                                muted
+                                playsInline
+                                preload="metadata"
+                                className="w-full h-full object-contain bg-black"
+                            ></video>
+                        ) : null}
                         <button
                             onClick={() => setSelectedProject(null)}
                             className="absolute top-6 right-6 p-4 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full text-white border border-white/10 transition-all z-20"
