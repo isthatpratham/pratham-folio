@@ -1,3 +1,5 @@
+# DEVELOPMENT IN PROGRESS
+
 # Portfolio Website
 
 A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth animations, contact form functionality, and a beautiful design.
