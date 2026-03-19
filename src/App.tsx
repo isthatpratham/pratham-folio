@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Journey from './components/Journey';
 import Projects from './components/Projects';
+import BookShowcase from './components/BookShowcase';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { gsap } from 'gsap';
@@ -85,6 +86,7 @@ function App() {
                 <About />
                 <Journey />
                 <Projects />
+                <BookShowcase />
                 <Contact />
                 <Footer />
               </>

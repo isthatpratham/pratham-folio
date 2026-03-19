@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
   const content = {
     Developer: {
       badge: "Available for specialized roles",
-      role: "Full-Stack Web Developer",
+      role: "Full-Stack Web Developer & Self-Published Author",
       description: (
         <>
           I build <span className="text-white/70 italic">fast, scalable web systems</span> and craft <br className="hidden md:block" />
