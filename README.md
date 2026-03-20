@@ -1,98 +1,162 @@
-# Portfolio Website
+# Pratham Portfolio
 
-A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth animations, contact form functionality, and a beautiful design.
+A dual-mode personal portfolio built to showcase development, video editing, and storytelling work in a single system.
 
-## 🚀 Features
+Live: https://www.prathamm.codes
 
-- **Modern Design**: Clean and professional portfolio layout
-- **Responsive**: Mobile-first design that works on all devices
-- **Smooth Animations**: GSAP-powered animations and transitions
-- **Contact Form**: EmailJS integration for contact functionality
-- **TypeScript**: Full type safety and better development experience
-- **Tailwind CSS**: Utility-first CSS framework for rapid development
+---
 
-## 🛠️ Tech Stack
+## Overview
 
-- **Frontend**: React 18, TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: GSAP (GreenSock)
-- **Icons**: Phosphor Icons
-- **Build Tool**: Vite
-- **Email Service**: EmailJS
+This is not a typical portfolio.
 
-## 📦 Installation
+It is designed as a mode-based system:
 
-1. **Clone the repository**
-   ```bash
-   git clone <your-repo-url>
-   cd portfolio_my
-   ```
+* Developer Mode → projects, systems, technical work
+* Editor Mode → video edits, motion work, storytelling
+* Author Section → published book and writing identity
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+The goal is simple: present multiple skill sets without creating confusion.
 
-3. **Set up environment variables**
-   - Copy `env.example` to `.env`
-   - Fill in your EmailJS credentials:
-     ```env
-     VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
-     VITE_EMAILJS_SERVICE_ID=your_service_id_here
-     VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
-     ```
+---
 
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
+## Features
 
-5. **Build for production**
-   ```bash
-   npm run build
-   ```
+* Mode switch (Developer ↔ Editor)
+* Cloudinary-powered video streaming (no lag)
+* YouTube + external + local video handling
+* Cinematic editor portfolio layout
+* Real client work showcase
+* Book showcase with global purchase links
+* Responsive across devices
+* Smooth UI transitions and interactions
 
-## 🔧 Environment Variables
+---
 
-The following environment variables are required for the contact form to work:
+## Tech Stack
 
-- `VITE_EMAILJS_PUBLIC_KEY`: Your EmailJS public key
-- `VITE_EMAILJS_SERVICE_ID`: Your EmailJS service ID
-- `VITE_EMAILJS_TEMPLATE_ID`: Your EmailJS template ID
+* React (Vite)
+* TypeScript
+* Tailwind CSS
+* Cloudinary (video CDN)
+* YouTube Embed API
 
-## 📁 Project Structure
+---
+
+## Project Structure
 
 ```
 src/
-├── components/          # React components
-│   ├── About.tsx       # About section
-│   ├── Contact.tsx     # Contact form
-│   ├── Footer.tsx      # Footer component
-│   ├── Hero.tsx        # Hero section
-│   ├── Journey.tsx     # Journey/timeline
-│   ├── Navigation.tsx  # Navigation bar
-│   ├── Preloader.tsx   # Loading screen
-│   └── Projects.tsx    # Projects showcase
-├── images/              # Static images
-├── types/               # TypeScript type definitions
-├── utils/               # Utility functions
-├── App.tsx              # Main app component
-├── main.tsx            # Entry point
-└── index.css           # Global styles
+  components/
+    Hero.tsx
+    Projects.tsx
+    Editor.tsx
+    BookShowcase.tsx
+    ...
+  
+  data/
+    editorProjects.ts
+  
+public/
+  images/
 ```
 
-## 🚀 Deployment
+---
 
-The project is configured for easy deployment:
+## Video Handling (Important)
 
-1. **Build the project**: `npm run build`
-2. **Deploy the `dist` folder** to your hosting service
-3. **Set environment variables** in your hosting platform
+Videos are NOT stored in the repository.
 
-## 📝 License
+All large video assets are hosted on Cloudinary for:
 
-This project is open source and available under the [MIT License](LICENSE).
+* faster load times
+* reduced bundle size
+* smoother playback
 
-## 🤝 Contributing
+Example format:
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+```
+https://res.cloudinary.com/<cloud-name>/video/upload/f_auto,q_auto/<video>.mp4
+```
+
+---
+
+## Getting Started
+
+Clone the repo:
+
+```
+git clone https://github.com/isthatpratham/pratham-folio.git
+cd pratham-folio
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run development server:
+
+```
+npm run dev
+```
+
+Build:
+
+```
+npm run build
+```
+
+---
+
+## Deployment
+
+Deployed on Vercel.
+
+* `main` branch → production
+* `editor-mode` branch → staging / preview
+
+---
+
+## Key Design Decisions
+
+* Separate identities without separate websites
+* Thumbnail-first video loading for performance
+* Minimal text, visual-first editor portfolio
+* CDN-based media delivery instead of local assets
+
+---
+
+## Author Section
+
+Book: *Where She Still Exists*
+
+Available on:
+
+* Amazon (IN, UK, US)
+* Flipkart
+* NotionPress
+
+---
+
+## Contact
+
+If you’re looking to collaborate or work together:
+
+* Portfolio: https://www.prathamm.codes
+* Editor Work: https://www.prathamm.codes/edit
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Final Note
+
+Built to represent not just skills, but range.
+
+Developer. Editor. Author.
