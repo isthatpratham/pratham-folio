@@ -39,7 +39,7 @@ export const editorProjects: EditorProject[] = [
     id: 4,
     title: "SaaS Product Explainer – SanvyaTech",
     category: "Explainers",
-    videoSrc: "/videos/SanvyaTech1.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990727/SanvyaTech1_gy6hux.mp4",
     thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1115",
     type: "local"
   },
@@ -47,7 +47,7 @@ export const editorProjects: EditorProject[] = [
     id: 5,
     title: "Enterprise Solutions – SanvyaTech",
     category: "Explainers",
-    videoSrc: "/videos/SanvyaTech2.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990742/SanvyaTech2_kt3iuc.mp4",
     thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1170",
     type: "local"
   },
@@ -195,7 +195,7 @@ export const editorProjects: EditorProject[] = [
     id: 23,
     title: "Client Birthday Edit – Cinematic Style",
     category: "Client Work",
-    videoSrc: "/videos/harshita bdy.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990772/harshita_bdy_ty7iz3.mp4",
     thumbnail: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=1170",
     type: "local"
   },
@@ -203,7 +203,7 @@ export const editorProjects: EditorProject[] = [
     id: 24,
     title: "Personal Gift Video – Story Edit",
     category: "Client Work",
-    videoSrc: "/videos/siaaa.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990751/siaaa_oofob6.mp4",
     thumbnail: "https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&q=80&w=1170",
     type: "local"
   },
@@ -211,7 +211,7 @@ export const editorProjects: EditorProject[] = [
     id: 25,
     title: "Cinematic Event Recap",
     category: "Client Work",
-    videoSrc: "/videos/tomake chai final.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990770/tomake_chai_final_lo2vcy.mp4",
     thumbnail: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=1169",
     type: "local"
   },
@@ -227,7 +227,7 @@ export const editorProjects: EditorProject[] = [
     id: 27,
     title: "Product Promo – High Impact",
     category: "Client Work",
-    videoSrc: "/videos/chanaaaa.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990721/chanaaaa_liobnb.mp4",
     thumbnail: "https://images.unsplash.com/photo-1493119508227-21d24263170c?auto=format&fit=crop&q=80&w=1160",
     type: "local"
   },
@@ -235,7 +235,7 @@ export const editorProjects: EditorProject[] = [
     id: 28,
     title: "Auralia Edit – Luxury Showcase",
     category: "Client Work",
-    videoSrc: "/videos/AuraliaEdit.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990732/AuraliaEdit_tsyuhl.mp4",
     thumbnail: "https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&q=80&w=1170",
     type: "local"
   },
@@ -243,7 +243,7 @@ export const editorProjects: EditorProject[] = [
     id: 29,
     title: "Client Collaboration – Step Edit",
     category: "Client Work",
-    videoSrc: "/videos/2step.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990730/2step_tbpagw.mp4",
     thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1171",
     type: "local"
   },
@@ -251,7 +251,7 @@ export const editorProjects: EditorProject[] = [
     id: 30,
     title: "Custom Project Edit – Viral Flow",
     category: "Client Work",
-    videoSrc: "/videos/chana aasa kooda_1.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990615/chana_aasa_kooda_1_okwsmp.mp4",
     thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1170",
     type: "local"
   },
@@ -259,7 +259,7 @@ export const editorProjects: EditorProject[] = [
     id: 31,
     title: "Cinematic Reel – Creative Cut",
     category: "Client Work",
-    videoSrc: "/videos/xxx.mp4",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/f_auto,q_auto/v1773990755/xxx_svt1xt.mp4",
     thumbnail: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1025",
     type: "local"
   },
