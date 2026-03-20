@@ -2,6 +2,10 @@ import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, GithubLogo } from '@phosphor-icons/react';
+import sanvyaHealthImg from '../images/sanvya-health-homepage.png';
+import artGalleryImg from '../images/art-gallery-homepage.png';
+import chromeImg from '../images/chrome.png';
+import sanvyaTechImg from '../images/sanvya-technologies-homepage.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,7 +64,7 @@ const Projects: React.FC = () => {
       title: 'Sanvya Health',
       description: 'Healthcare infrastructure platform powering real hospital workflows including patient admission, IPD/OPD management, billing systems, and automated communication.',
       tech: ['Next.js', 'PostgreSQL', 'Tailwind CSS', 'Twilio API'],
-      image: 'https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: sanvyaHealthImg,
       github: '',
       live: 'https://sanvyahealth.com/'
     },
@@ -69,7 +73,7 @@ const Projects: React.FC = () => {
       title: 'ArtGallery',
       description: 'A modern digital art gallery platform where users can explore curated artwork collections through a clean and immersive interface. Built as a full-stack project with smooth browsing and elegant UI.',
       tech: ['React', 'GSAP', 'Express', 'Supabase'],
-      image: 'https://images.pexels.com/photos/20967/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800',
+      image: artGalleryImg,
       github: 'https://github.com/isthatpratham/artgallery.git',
       live: 'https://artgallery-murex-phi.vercel.app/'
     },
@@ -78,7 +82,7 @@ const Projects: React.FC = () => {
       title: 'TabNap',
       description: 'A lightweight Chrome extension that intelligently puts inactive browser tabs to sleep to reduce memory usage and improve browser performance by replacing them with a glass-style sleep screen.',
       tech: ['JavaScript', 'Chrome Extension API', 'CSS Glassmorphism'],
-      image: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: chromeImg,
       github: 'https://github.com/isthatpratham/tabnap.git',
       live: ''
     },
@@ -87,7 +91,7 @@ const Projects: React.FC = () => {
       title: 'Sanvya Technologies Official Website',
       description: 'The official website for Sanvya Technologies showcasing the company\'s healthcare software solutions and digital infrastructure services.',
       tech: ['Vite', 'React', 'Tailwind CSS', 'Framer Motion'],
-      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: sanvyaTechImg,
       github: '',
       live: 'https://sanvyatechnologies.com/'
     }

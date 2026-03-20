@@ -43,9 +43,6 @@ const Footer: React.FC = () => {
       <div className="footer-content max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <div className="text-3xl font-light text-white mb-4"></div>
-          <p className="text-gray-400 max-w-md mx-auto">
-            Crafting digital experiences that inspire and innovate
-          </p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-8 mb-12">
@@ -62,7 +59,7 @@ const Footer: React.FC = () => {
 
         <div className="text-center border-t border-white/10 pt-8">
           <p className="text-gray-500 text-sm flex items-center justify-center">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-spline-white to-spline-grey">© 2025</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-spline-white to-spline-grey">© Pratham 2026</span>
           </p>
         </div>
       </div>

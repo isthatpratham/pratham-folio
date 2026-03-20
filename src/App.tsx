@@ -6,9 +6,12 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Journey from './components/Journey';
 import Projects from './components/Projects';
+import BookShowcase from './components/BookShowcase';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { gsap } from 'gsap';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import EditorPage from './pages/EditorPage';
 
 function App() {
   const appRef = React.useRef<HTMLDivElement>(null);
@@ -39,50 +42,60 @@ function App() {
   }, []);
 
   return (
-    <div ref={appRef} className="App relative bg-[#050505] spotlight overflow-x-hidden">
-      <Preloader />
+    <BrowserRouter>
+      <div ref={appRef} className="App relative bg-[#050505] spotlight overflow-x-hidden">
+        <Preloader />
 
-      {/* Global Background Atmosphere */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Large Diffused Glow */}
-        <div className="hero-glow-v2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vw] bg-white/[0.03] rounded-full blur-[150px] animate-bg-pulse"></div>
+        {/* Global Background Atmosphere */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          {/* Large Diffused Glow */}
+          <div className="hero-glow-v2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vw] bg-white/[0.03] rounded-full blur-[150px] animate-bg-pulse"></div>
 
-        {/* Slow Shifting Gradient Light */}
-        <div className="absolute inset-0 opacity-20 animate-gradient-shift bg-gradient-to-br from-transparent via-white/5 to-transparent"></div>
+          {/* Slow Shifting Gradient Light */}
+          <div className="absolute inset-0 opacity-20 animate-gradient-shift bg-gradient-to-br from-transparent via-white/5 to-transparent"></div>
 
-        {/* Global Particle System */}
-        <div className="particles-container absolute inset-0">
-          {[...Array(25)].map((_, i) => (
-            <div
-              key={i}
-              className="particle"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDuration: `${Math.random() * 10 + 15}s`,
-                animationDelay: `${Math.random() * -20}s`,
-                opacity: Math.random() * 0.3 + 0.1
-              }}
-            />
-          ))}
+          {/* Global Particle System */}
+          <div className="particles-container absolute inset-0">
+            {[...Array(25)].map((_, i) => (
+              <div
+                key={i}
+                className="particle"
+                style={{
+                  width: `${Math.random() * 3 + 1}px`,
+                  height: `${Math.random() * 3 + 1}px`,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDuration: `${Math.random() * 10 + 15}s`,
+                  animationDelay: `${Math.random() * -20}s`,
+                  opacity: Math.random() * 0.3 + 0.1
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Cinematic Grain Overlay */}
+          <div className="grain-overlay opacity-[0.06]"></div>
         </div>
 
-        {/* Cinematic Grain Overlay */}
-        <div className="grain-overlay opacity-[0.06]"></div>
+        <Navigation />
+        <main className="relative z-10 font-inter">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <About />
+                <Journey />
+                <Projects />
+                <BookShowcase />
+                <Contact />
+                <Footer />
+              </>
+            } />
+            <Route path="/edit" element={<EditorPage />} />
+          </Routes>
+        </main>
       </div>
-
-      <Navigation />
-      <main className="relative z-10 font-inter">
-        <Hero />
-        <About />
-        <Journey />
-        <Projects />
-        <Contact />
-        <Footer />
-      </main>
-    </div>
+    </BrowserRouter>
   );
 }
 
