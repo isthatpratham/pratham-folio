@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowDown, GithubLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react';
 import { gsap } from 'gsap';
-import profileImg from '../images/pratham.jpg';
-import editorProfileImg from '../images/prathamedit.jpg';
+import profileImg from '../images/Dev_Photo.jpeg';
+import editorProfileImg from '../images/Editor_Photo.png';
 import { Play, Eye } from '@phosphor-icons/react';
 
 const Hero: React.FC = () => {

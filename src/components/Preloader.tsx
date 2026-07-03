@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
+import profileImg from '../images/Dev_Photo.jpeg';
+import editorProfileImg from '../images/Editor_Photo.png';
 
 const Preloader: React.FC = () => {
   useEffect(() => {
@@ -7,19 +9,21 @@ const Preloader: React.FC = () => {
 
     // Initial setup
     gsap.set('.preloader', { opacity: 1 });
-    gsap.set('.progress-bar-fill', { width: '0%' });
+    gsap.set('.progress-circle-fill', { strokeDashoffset: 251.3 });
+    gsap.set('.editor-img', { opacity: 0 });
     gsap.set('.main', { opacity: 0 });
 
     // Progress bar animation
-    tl.to('.progress-bar-fill', {
-      width: '100%',
+    tl.to('.progress-circle-fill', {
+      strokeDashoffset: 0,
       duration: 2.5,
       ease: 'power2.out',
     })
-      .to('.preloader-text', {
-        opacity: 0.6,
-        duration: 0.5,
-      }, '-=0.5')
+      .to('.editor-img', {
+        opacity: 1,
+        duration: 2.5,
+        ease: 'power2.out',
+      }, 0)
       .to('.preloader', {
         opacity: 0,
         scale: 0.9,
@@ -38,21 +42,54 @@ const Preloader: React.FC = () => {
 
   return (
     <div className="preloader fixed inset-0 z-50 bg-black flex flex-col items-center justify-center">
-      <div className="text-center mb-12">
-        <h1 className="preloader-text text-6xl md:text-8xl font-light text-white mb-8">
+      <div className="relative w-24 h-24 flex items-center justify-center">
+        {/* The circular progress bar SVG */}
+        <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 96 96">
+          <defs>
+            <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="100%" stopColor="#888888" />
+            </linearGradient>
+          </defs>
+          {/* Background track circle */}
+          <circle
+            cx="48"
+            cy="48"
+            r="40"
+            className="stroke-gray-800"
+            strokeWidth="3"
+            fill="transparent"
+          />
+          {/* Animating progress circle */}
+          <circle
+            cx="48"
+            cy="48"
+            r="40"
+            stroke="url(#progress-gradient)"
+            strokeWidth="3"
+            fill="transparent"
+            strokeDasharray="251.3"
+            strokeDashoffset="251.3"
+            strokeLinecap="round"
+            className="progress-circle-fill"
+          />
+        </svg>
 
-        </h1>
-        <div className="text-spline-light-grey text-lg font-light tracking-widest">
-          LOADING EXPERIENCE
+        {/* Images inside the circle */}
+        <div className="w-[72px] h-[72px] rounded-full overflow-hidden relative z-10">
+          {/* Dev_Photo.jpeg */}
+          <img 
+            src={profileImg} 
+            alt="Developer persona" 
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Editor_Photo.png */}
+          <img 
+            src={editorProfileImg} 
+            alt="Editor persona" 
+            className="editor-img absolute inset-0 w-full h-full object-cover"
+          />
         </div>
-      </div>
-
-      <div className="progress-container w-80 h-1 bg-gray-800 rounded-full overflow-hidden">
-        <div className="progress-bar-fill h-full bg-gradient-to-r from-spline-white to-spline-grey rounded-full"></div>
-      </div>
-
-      <div className="mt-8 text-gray-400 text-sm">
-        Initializing portfolio...
       </div>
 
       {/* Floating orbs */}
