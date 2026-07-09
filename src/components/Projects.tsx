@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, GithubLogo } from '@phosphor-icons/react';
-import sanvyaHealthImg from '../images/sanvya-health-homepage.png';
+import sanvyaHealthImg from '../images/image.png';
 import artGalleryImg from '../images/art-gallery-homepage.png';
+import gitWrappedImg from '../images/GitWrapped-Homepage.png';
 import chromeImg from '../images/chrome.png';
-import sanvyaTechImg from '../images/sanvya-technologies-homepage.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,21 +79,21 @@ const Projects: React.FC = () => {
     },
     {
       id: 3,
+      title: 'GitWrapped',
+      description: 'Spotify Wrapped, but for developers. Enter a username, get a story-style slideshow of the year in code: longest streak, favorite language, most active coding hour, language evolution, coding calendar heatmap, commit stats, fun achievements, and shareable story cards.',
+      tech: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'GitHub API'],
+      image: gitWrappedImg,
+      github: '',
+      live: 'https://git-wrapped-tan-sigma.vercel.app/'
+    },
+    {
+      id: 4,
       title: 'TabNap',
       description: 'A lightweight Chrome extension that intelligently puts inactive browser tabs to sleep to reduce memory usage and improve browser performance by replacing them with a glass-style sleep screen.',
       tech: ['JavaScript', 'Chrome Extension API', 'CSS Glassmorphism'],
       image: chromeImg,
       github: 'https://github.com/isthatpratham/tabnap.git',
       live: ''
-    },
-    {
-      id: 4,
-      title: 'Sanvya Technologies Official Website',
-      description: 'The official website for Sanvya Technologies showcasing the company\'s healthcare software solutions and digital infrastructure services.',
-      tech: ['Vite', 'React', 'Tailwind CSS', 'Framer Motion'],
-      image: sanvyaTechImg,
-      github: '',
-      live: 'https://sanvyatechnologies.com/'
     }
   ];
 
