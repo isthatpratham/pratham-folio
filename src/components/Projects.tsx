@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, GithubLogo } from '@phosphor-icons/react';
 import sanvyaHealthImg from '../images/image.png';
+import codeAtlasImg from '../images/image copy 2.png';
 import artGalleryImg from '../images/art-gallery-homepage.png';
 import gitWrappedImg from '../images/GitWrapped-Homepage.png';
 import chromeImg from '../images/chrome.png';
@@ -70,6 +71,15 @@ const Projects: React.FC = () => {
     },
     {
       id: 2,
+      title: 'CodeAtlas',
+      description: 'An interactive visualization platform that transforms a GitHub repository into an explorable map. Instead of reading software through folders and files, developers explore architecture spatially. A repository becomes a landscape.',
+      tech: ['Next.js', 'Three.js', 'Tailwind CSS', 'TypeScript'],
+      image: codeAtlasImg,
+      github: 'https://github.com/isthatpratham/CodeAtlas',
+      live: 'https://code-atlas-beta.vercel.app/'
+    },
+    {
+      id: 3,
       title: 'ArtGallery',
       description: 'A modern digital art gallery platform where users can explore curated artwork collections through a clean and immersive interface. Built as a full-stack project with smooth browsing and elegant UI.',
       tech: ['React', 'GSAP', 'Express', 'Supabase'],
@@ -78,16 +88,16 @@ const Projects: React.FC = () => {
       live: 'https://artgallery-murex-phi.vercel.app/'
     },
     {
-      id: 3,
+      id: 4,
       title: 'GitWrapped',
       description: 'Spotify Wrapped, but for developers. Enter a username, get a story-style slideshow of the year in code: longest streak, favorite language, most active coding hour, language evolution, coding calendar heatmap, commit stats, fun achievements, and shareable story cards.',
       tech: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'GitHub API'],
       image: gitWrappedImg,
-      github: '',
+      github: 'https://github.com/isthatpratham/GitWrapped',
       live: 'https://git-wrapped-tan-sigma.vercel.app/'
     },
     {
-      id: 4,
+      id: 5,
       title: 'TabNap',
       description: 'A lightweight Chrome extension that intelligently puts inactive browser tabs to sleep to reduce memory usage and improve browser performance by replacing them with a glass-style sleep screen.',
       tech: ['JavaScript', 'Chrome Extension API', 'CSS Glassmorphism'],
