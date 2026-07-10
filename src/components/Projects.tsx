@@ -7,6 +7,7 @@ import codeAtlasImg from '../images/image copy 2.png';
 import artGalleryImg from '../images/art-gallery-homepage.png';
 import gitWrappedImg from '../images/GitWrapped-Homepage.png';
 import chromeImg from '../images/chrome.png';
+import yaprecapImg from '../images/yaprecap.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,6 +105,15 @@ const Projects: React.FC = () => {
       image: chromeImg,
       github: 'https://github.com/isthatpratham/tabnap.git',
       live: ''
+    },
+    {
+      id: 6,
+      title: 'YapRecap',
+      description: 'A privacy-first web application that transforms exported WhatsApp group chats into beautiful, animated recap stories. Inspired by modern digital yearbooks and story formats, it parses raw chat logs entirely in-browser, analyzes group metrics, and outputs a cinematic slide deck highlighting the group\'s yappers, night owls, milestones, vocabulary, and peaks.',
+      tech: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Framer Motion'],
+      image: yaprecapImg,
+      github: 'https://github.com/isthatpratham/YapRecap',
+      live: 'https://yaprecap.vercel.app/'
     }
   ];
 
