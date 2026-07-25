@@ -8,6 +8,7 @@ import artGalleryImg from '../images/art-gallery-homepage.png';
 import gitWrappedImg from '../images/GitWrapped-Homepage.png';
 import chromeImg from '../images/chrome.png';
 import yaprecapImg from '../images/yaprecap.png';
+import deadDropImg from '../images/screencapture-localhost-5173-upload-2026-07-26-03_21_46.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -114,6 +115,16 @@ const Projects: React.FC = () => {
       image: yaprecapImg,
       github: 'https://github.com/isthatpratham/YapRecap',
       live: 'https://yaprecap.vercel.app/'
+    },
+    {
+      id: 7,
+      title: 'DeadDrop',
+      description: 'DeadDrop is a secure, anonymous file drop platform for sharing files with expiring, self-destructing links. Files can be protected with passwords, limited by download count, and automatically cleaned up after expiration. The project uses a React frontend and a TypeScript + Express backend with SQLite for zero external database setup.',
+      tech: ['TypeScript', 'Tailwind', 'Axios', 'Node', 'Multer', 'Vite'],
+      image: deadDropImg,
+      github: 'https://github.com/isthatpratham/DeadDrop',
+      live: '',
+      underDevelopment: true
     }
   ];
 
@@ -138,6 +149,11 @@ const Projects: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                {project.underDevelopment && (
+                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 bg-black/50 py-3 text-center">
+                    <span className="text-white text-sm font-semibold uppercase tracking-[0.25em]">Under Development</span>
+                  </div>
+                )}
               </div>
 
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white/80 transition-colors tracking-tight">

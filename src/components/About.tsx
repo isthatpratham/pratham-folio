@@ -9,11 +9,11 @@ import {
   Cpu,
   Globe,
   Database,
-  ShieldCheck,
   Buildings,
   Wrench,
+  Cloud,
   Sparkle,
-  Cloud
+  RocketLaunch
 } from '@phosphor-icons/react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -49,44 +49,44 @@ const About: React.FC = () => {
 
   const techStack = [
     {
-      category: 'Languages',
+      category: 'Programming Languages',
       icon: <Code size={24} className="text-white/40" />,
-      items: ['C++', 'JavaScript', 'TypeScript', 'Java', 'Python', 'PHP']
-    },
-    {
-      category: 'Backend',
-      icon: <Terminal size={24} className="text-white/40" />,
-      items: ['Node.js', 'NestJS', 'Express', 'Django']
+      items: ['JavaScript', 'TypeScript', 'Python', 'PHP', 'Java']
     },
     {
       category: 'Frontend',
       icon: <Globe size={24} className="text-white/40" />,
-      items: ['React', 'Next.js', 'Redux', 'HTML', 'CSS', 'Tailwind']
+      items: ['React', 'Vue', 'Angular', 'Next.js', 'HTML', 'CSS', 'Tailwind', 'Bootstrap']
     },
     {
-      category: 'Databases',
+      category: 'Backend',
+      icon: <Terminal size={24} className="text-white/40" />,
+      items: ['Node.js', 'Django', 'NestJS', 'Laravel']
+    },
+    {
+      category: 'Database',
       icon: <Database size={24} className="text-white/40" />,
-      items: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase', 'Redis']
+      items: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'SQLite']
     },
     {
-      category: 'Infrastructure',
+      category: 'DevOps & Cloud',
       icon: <Cloud size={24} className="text-white/40" />,
-      items: ['AWS', 'Google Cloud', 'Cloudflare', 'Docker']
-    },
-    {
-      category: 'Security & Auth',
-      icon: <ShieldCheck size={24} className="text-white/40" />,
-      items: ['Clerk']
+      items: ['Docker', 'Kubernetes', 'AWS', 'Google Cloud']
     },
     {
       category: 'Tools',
       icon: <Wrench size={24} className="text-white/40" />,
-      items: ['Git', 'Prisma', 'Postman', 'Razorpay', 'Stripe', 'Nginx']
+      items: ['Git', 'VS Code', 'Postman', 'Vite']
     },
     {
-      category: 'AI & Observability',
+      category: 'AI and Tools',
       icon: <Sparkle size={24} className="text-white/40" />,
-      items: ['Claude', 'LangChain', 'Sentry', 'Grafana']
+      items: ['Claude', 'Codex', 'Gemini', 'CodeRabbit', 'Cursor', 'GitHub Copilot']
+    },
+    {
+      category: 'Deployment',
+      icon: <RocketLaunch size={24} className="text-white/40" />,
+      items: ['Vercel', 'AWS', 'Cloudflare', 'DigitalOcean', 'Hostinger', 'Render', 'Railway', 'Netlify']
     }
   ];
 

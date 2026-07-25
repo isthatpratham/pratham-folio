@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowDown, GithubLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react';
 import { gsap } from 'gsap';
-import profileImg from '../images/Dev_Photo.jpeg';
-import editorProfileImg from '../images/Editor_Photo.png';
+import profileImg from '../images/pf-image.png';
+import editorProfileImg from '../images/pf-image.png';
 import { Play, Eye } from '@phosphor-icons/react';
 
 const Hero: React.FC = () => {
@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
 
   const content = {
     Developer: {
-      badge: "Available for specialized roles",
+      badge: "",
       role: "Full-Stack Web Developer & Self-Published Author",
       description: (
         <>
@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
       statusColor: "bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"
     },
     Editor: {
-      badge: "Available for freelance editing",
+      badge: "",
       role: "Video Editor & Self-Published Author",
       description: (
         <>
@@ -120,13 +120,15 @@ const Hero: React.FC = () => {
           <div className={`max-w-3xl hero-content-main text-center lg:text-left order-2 lg:order-1 flex flex-col items-center lg:items-start transition-all duration-200 ease-in-out ${isTransitioning ? 'opacity-0 blur-sm translate-y-2' : 'opacity-100 blur-none translate-y-0'}`}>
 
             {/* Status Badge */}
-            <div className="hero-badge-v2 inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8 backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-40"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-              </span>
-              <span className="text-[11px] uppercase tracking-[0.25em] font-semibold text-white/60">{content.badge}</span>
-            </div>
+            {content.badge && (
+              <div className="hero-badge-v2 inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-40"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                </span>
+                <span className="text-[11px] uppercase tracking-[0.25em] font-semibold text-white/60">{content.badge}</span>
+              </div>
+            )}
 
             {/* Headline */}
             <h1 className="text-white tracking-tighter leading-none mb-10">

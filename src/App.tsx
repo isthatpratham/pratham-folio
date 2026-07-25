@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { initAnimations } from './utils/animations';
-import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -44,8 +43,6 @@ function App() {
   return (
     <BrowserRouter>
       <div ref={appRef} className="App relative bg-[#050505] spotlight overflow-x-hidden">
-        <Preloader />
-
         {/* Global Background Atmosphere */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           {/* Large Diffused Glow */}
