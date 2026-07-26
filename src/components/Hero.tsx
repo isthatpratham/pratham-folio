@@ -141,33 +141,50 @@ const Hero: React.FC = () => {
 
             {/* Mode Switcher - Positioned BELOW Name */}
             <div className="flex justify-center lg:justify-start mb-10">
-              <div className="relative flex items-center p-1 rounded-full border border-white/10 bg-[#0A0A0A]/40 backdrop-blur-xl transition-all duration-500 hover:border-white/20 shadow-2xl">
-                {/* Sliding Background Indicator */}
+              <div className="relative group">
+                {/* Blinking Glow Backdrop */}
                 <div
-                  className="absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-white/10 border border-white/15 shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-300 ease-in-out"
-                  style={{
-                    transform: `translateX(${activeMode === 'Developer' ? '0' : '100%'})`,
-                    left: '4px'
-                  }}
+                  className={`absolute -inset-1.5 rounded-full blur-md transition-all duration-700 animate-toggle-glow ${
+                    activeMode === 'Developer'
+                      ? 'bg-gradient-to-r from-emerald-500/30 via-white/20 to-cyan-500/30'
+                      : 'bg-gradient-to-r from-indigo-500/40 via-violet-500/30 to-purple-500/40'
+                  }`}
                 />
-                {(['Developer', 'Editor'] as const).map((mode) => (
-                  <button
-                    key={mode}
-                    onClick={() => {
-                      if (activeMode === mode) return;
-                      setIsTransitioning(true);
-                      setTimeout(() => {
-                        navigate(mode === 'Developer' ? '/' : '/edit');
-                      }, 300);
+
+                <div className="relative flex items-center p-1 w-64 sm:w-72 rounded-full border border-white/20 bg-[#0A0A0A]/80 backdrop-blur-xl transition-all duration-500 hover:border-white/40 shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+                  {/* Sliding Background Indicator */}
+                  <div
+                    className="absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-white/15 border border-white/25 shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all duration-300 ease-in-out"
+                    style={{
+                      transform: `translateX(${activeMode === 'Developer' ? '0' : '100%'})`,
+                      left: '4px'
                     }}
-                    className={`relative z-10 px-8 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 ease-in-out ${activeMode === mode
-                      ? 'text-white'
-                      : 'text-white/35 hover:text-white/60'
-                      }`}
-                  >
-                    {mode}
-                  </button>
-                ))}
+                  />
+                  {(['Developer', 'Editor'] as const).map((mode) => (
+                    <button
+                      key={mode}
+                      onClick={() => {
+                        if (activeMode === mode) return;
+                        setIsTransitioning(true);
+                        setTimeout(() => {
+                          navigate(mode === 'Developer' ? '/' : '/edit');
+                        }, 300);
+                      }}
+                      className={`relative z-10 flex-1 py-2.5 flex items-center justify-center rounded-full text-xs font-bold uppercase tracking-[0.2em] pl-[0.2em] transition-all duration-300 ease-in-out select-none ${activeMode === mode
+                        ? 'text-white font-extrabold'
+                        : 'text-white/40 hover:text-white/80'
+                        }`}
+                    >
+                      <span>{mode}</span>
+                      {activeMode !== mode && (
+                        <span className="relative flex h-1.5 w-1.5 ml-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white/80"></span>
+                        </span>
+                      )}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -216,6 +233,15 @@ const Hero: React.FC = () => {
           {/* Right Column: Profile Image Visual */}
           <div className={`hero-profile-visual order-1 lg:order-2 flex items-center justify-center relative transition-all duration-100 ease-in-out ${isTransitioning ? 'opacity-0 scale-95 blur-md' : 'opacity-100 scale-100 blur-none'}`}>
             <div className="relative animate-float-slow profile-glow">
+              {/* Blinking Glow Backdrop behind Profile Picture */}
+              <div
+                className={`absolute -inset-6 rounded-full blur-3xl transition-all duration-1000 animate-toggle-glow ${
+                  activeMode === 'Developer'
+                    ? 'bg-gradient-to-r from-emerald-500/40 via-teal-400/25 to-cyan-500/40 opacity-80'
+                    : 'bg-gradient-to-r from-indigo-500/50 via-violet-500/40 to-purple-500/50 opacity-85'
+                }`}
+              />
+
               {/* Decorative Rings */}
               <div className="absolute inset-0 -m-4 border border-white/10 rounded-full animate-pulse-slow"></div>
               <div className="absolute inset-0 -m-8 border border-white/5 rounded-full animate-pulse-slow" style={{ animationDelay: '-2s' }}></div>

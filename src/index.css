@@ -121,6 +121,22 @@ body {
   }
 }
 
+/* Blinking Glow for Toggle Switch */
+@keyframes toggle-glow-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+.animate-toggle-glow {
+  animation: toggle-glow-pulse 2.5s ease-in-out infinite;
+}
+
 /* Base Grain Texture */
 .grain-overlay {
   position: absolute;
@@ -259,9 +275,5 @@ body {
 .animate-marquee-infinite {
   display: flex;
   width: max-content;
-  animation: marquee 40s linear infinite;
-}
-
-.animate-marquee-infinite:hover {
-  animation-play-state: paused;
+  animation: marquee 35s linear infinite;
 }

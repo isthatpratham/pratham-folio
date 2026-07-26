@@ -24,7 +24,7 @@ interface Client {
 }
 
 const TRUSTED_CLIENTS: Client[] = [
-    { id: 1, name: 'Maz Fashion', logo: logoMaz },
+    { id: 1, name: 'Max Fashion', logo: logoMaz },
     { id: 2, name: 'VulnCon', logo: logoVulncon },
     { id: 3, name: 'FairExPay', logo: logoFairexpay },
     { id: 4, name: 'OneCore Global', logo: logoOnecore },
@@ -37,8 +37,12 @@ const TRUSTED_CLIENTS: Client[] = [
 
 const SHOWREEL_DATA = {
     id: "showreel",
-    type: "showreel",
-    status: "coming-soon"
+    title: "Showreel 2026 – The Art of Storytelling",
+    category: "Showreel",
+    videoSrc: "https://res.cloudinary.com/dtntvn6lo/video/upload/v1785102936/JulyShowreelPratham_cyumpn.mp4",
+    thumbnail: "https://res.cloudinary.com/dtntvn6lo/video/upload/so_25/v1785102936/JulyShowreelPratham_cyumpn.jpg",
+    type: "local",
+    status: "ready"
 };
 
 const STAT_DATA = [
@@ -164,51 +168,50 @@ const Editor: React.FC = () => {
     return (
         <div className="editor-container">
             {/* Showreel Section */}
-            <div id="showreel" className="showreel-section w-full max-w-5xl mx-auto mt-24">
-                <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-white/5 shadow-[0_0_50px_rgba(255,255,255,0.05)] group">
+            <div id="showreel" className="showreel-section w-full max-w-5xl lg:max-w-[1330px] mx-auto mt-24 px-4 sm:px-6 lg:px-8 relative group">
+                {/* Blinking Glow Backdrop behind Showreel */}
+                <div className="absolute -inset-4 sm:-inset-6 lg:-inset-8 rounded-3xl bg-gradient-to-r from-indigo-500/40 via-violet-500/30 to-purple-500/40 blur-3xl opacity-80 transition-all duration-1000 animate-toggle-glow pointer-events-none" />
+
+                <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-white/5 shadow-[0_0_60px_rgba(99,102,241,0.15)] group">
                     {!isPlaying ? (
                         <div
                             className="absolute inset-0 cursor-pointer group"
-                            onClick={() => {
-                                if (SHOWREEL_DATA.status === 'coming-soon') {
-                                    setSelectedProject(SHOWREEL_DATA as any);
-                                } else {
-                                    setIsPlaying(true);
-                                }
-                            }}
+                            onClick={() => setIsPlaying(true)}
                         >
                             <img
-                                src={showreelThumb}
+                                src={SHOWREEL_DATA.thumbnail}
                                 alt="Showreel Thumbnail"
-                                className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                                className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div className="absolute inset-0 flex items-center justify-center">
-                                {SHOWREEL_DATA.status === 'coming-soon' ? (
-                                    <div className="px-8 py-4 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-2xl">
-                                        <span className="text-white font-bold tracking-[0.2em] uppercase text-sm">Coming Soon</span>
+                                <div className="w-20 h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-2xl">
+                                    <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full bg-white text-black flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.3)]">
+                                        <Play weight="fill" size={36} className="ml-1" />
                                     </div>
-                                ) : (
-                                    <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-2xl">
-                                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white text-black flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.3)]">
-                                            <Play weight="fill" size={32} className="ml-1" />
-                                        </div>
-                                    </div>
-                                )}
+                                </div>
                             </div>
-                            <div className="absolute bottom-8 left-8 text-left">
-                                <p className="text-white/40 text-sm font-medium tracking-[0.2em] uppercase mb-1">2024 Showreel</p>
-                                <h3 className="text-2xl font-bold text-white tracking-tight">The Art of Storytelling</h3>
+                            <div className="absolute bottom-8 left-8 lg:bottom-12 lg:left-12 text-left">
+                                <p className="text-white/50 text-sm lg:text-base font-medium tracking-[0.2em] uppercase mb-1 lg:mb-2">2026 Showreel</p>
+                                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight">The Art of Storytelling</h3>
                             </div>
                         </div>
                     ) : (
                         <div className="absolute inset-0 bg-black">
-                            <div className="w-full h-full flex items-center justify-center text-white/50 bg-black/90">
-                                Video Unavailable
-                            </div>
+                            <video
+                                src={SHOWREEL_DATA.videoSrc}
+                                controls
+                                controlsList="nodownload"
+                                onContextMenu={(e) => e.preventDefault()}
+                                autoPlay
+                                playsInline
+                                preload="auto"
+                                onEnded={() => setIsPlaying(false)}
+                                className="w-full h-full object-contain"
+                            />
                             <button
                                 onClick={() => setIsPlaying(false)}
-                                className="absolute top-4 right-4 p-2 bg-black/50 backdrop-blur-md rounded-full text-white/70 hover:text-white hover:bg-black/80 transition-all z-20"
+                                className="absolute top-4 right-4 p-3 bg-black/60 hover:bg-black/80 backdrop-blur-md rounded-full text-white/70 hover:text-white border border-white/10 transition-all z-20 shadow-lg"
                             >
                                 <X size={24} />
                             </button>
@@ -281,6 +284,14 @@ const Editor: React.FC = () => {
                                 <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                     {project.type === 'local' ? (
                                         <p className="text-white/50 text-sm font-medium tracking-wider">#{index + 1}</p>
+                                    ) : project.type === 'youtube' ? (
+                                        <>
+                                            <p className="text-white/40 text-[10px] font-bold tracking-[.3em] uppercase mb-2">{project.category}</p>
+                                            {/* Mobile View: Channel Name Only */}
+                                            <h3 className="md:hidden text-base sm:text-lg font-bold text-white transition-colors">{project.channelName || 'YouTube'}</h3>
+                                            {/* Desktop View: Full YouTube Video Title */}
+                                            <h3 className="hidden md:block text-xl font-bold text-white transition-colors">{project.title}</h3>
+                                        </>
                                     ) : (
                                         <>
                                             <p className="text-white/40 text-[10px] font-bold tracking-[.3em] uppercase mb-2">{project.category}</p>
@@ -310,19 +321,19 @@ const Editor: React.FC = () => {
                 </div>
                 <div className="w-full overflow-hidden relative">
                     <div className="flex animate-marquee-infinite py-4">
-                        {[...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS].map((client, index) => (
+                        {[...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS].map((client, index) => (
                             <div
                                 key={`${client.id}-${index}`}
                                 className="mx-6 md:mx-10 group flex flex-col items-center justify-center transition-all duration-500"
                             >
-                                <div className="w-24 h-24 md:w-32 md:h-32 p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10 group-hover:border-white/20 group-hover:brightness-125 shadow-xl">
+                                <div className="w-24 h-24 md:w-32 md:h-32 p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10 group-hover:border-white/20 shadow-xl">
                                     <img
                                         src={client.logo}
                                         alt={client.name}
-                                        className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-all filter grayscale group-hover:grayscale-0 brightness-110 contrast-110"
+                                        className="w-full h-full object-contain opacity-100 transition-all filter-none"
                                     />
                                 </div>
-                                <span className="mt-4 text-[10px] uppercase tracking-[0.2em] font-bold text-white/20 group-hover:text-white/60 transition-colors">
+                                <span className="mt-4 text-[10px] uppercase tracking-[0.2em] font-bold text-white/40 group-hover:text-white/80 transition-colors">
                                     {client.name}
                                 </span>
                             </div>
@@ -430,6 +441,8 @@ const Editor: React.FC = () => {
                                 <video
                                     src={selectedProject.videoSrc}
                                     controls
+                                    controlsList="nodownload"
+                                    onContextMenu={(e) => e.preventDefault()}
                                     autoPlay
                                     playsInline
                                     preload="auto"

@@ -7,31 +7,35 @@ export interface EditorProject {
   thumbnail: string;
   type: "youtube" | "external" | "local";
   externalUrl?: string;
+  channelName?: string;
 }
 
 export const editorProjects: EditorProject[] = [
   // Explainers
   {
     id: 1,
-    title: "Fintech Explainer – Study Abroad Payments",
+    title: "I’m fat can I do calisthenics?",
     category: "Explainers",
     videoId: "goPWjqhK7rk",
+    channelName: "Yellow Dude",
     thumbnail: "https://img.youtube.com/vi/goPWjqhK7rk/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 2,
-    title: "Travel Remittance Explainer – Mihuru Travels",
+    title: "Top 3 reasons you fail at leg gains in calisthenics",
     category: "Explainers",
     videoId: "W6F5rA4bNfE",
+    channelName: "Yellow Dude",
     thumbnail: "https://img.youtube.com/vi/W6F5rA4bNfE/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 3,
-    title: "Animated Payment Workflow Explainer",
+    title: "I’m skinny can I do calisthenics?",
     category: "Explainers",
     videoId: "vuv985ZKjhU",
+    channelName: "Yellow Dude",
     thumbnail: "https://img.youtube.com/vi/vuv985ZKjhU/maxresdefault.jpg",
     type: "youtube"
   },
@@ -55,139 +59,138 @@ export const editorProjects: EditorProject[] = [
   // Shorts
   {
     id: 6,
-    title: "Podcast Clip – High Retention Edit",
+    title: "Whey Protein VS Cooked Dal #podcast #stws #guthealth #gym",
     category: "Shorts",
     videoId: "hzUwdVyHDE4",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/hzUwdVyHDE4/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 7,
-    title: "Short Form Content – Viral Hook Edit",
+    title: "Is McDonald's Cheaper than Fresh Fruits? #agriculture #nike #business #stws #sustainability #farming",
     category: "Shorts",
     videoId: "doxI6TLcUvk",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/doxI6TLcUvk/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 8,
-    title: "YouTube Shorts – Engagement Optimized",
+    title: "How Bryan Johnson made Air Pollution Headlines! #bryanjohnson #india #bjp #podcast #stws #climate",
     category: "Shorts",
     videoId: "tnOrqPE44uc",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/tnOrqPE44uc/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 9,
-    title: "Podcast Clip – High Retention Edit",
+    title: "What You Need to Know About Diabetes and How to Control Blood Sugar #preventdiabetes #health #stws",
     category: "Shorts",
     videoId: "1ILKYs5JkK8",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/1ILKYs5JkK8/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 10,
-    title: "Short Form Content – Viral Hook Edit",
+    title: "There's Gold in our Trash? #urbanfarming #mumbai #delhi #kitchen #soil #food #organicwaste #stws",
     category: "Shorts",
     videoId: "fHuaZfg7IzA",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/fHuaZfg7IzA/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 11,
-    title: "YouTube Shorts – Engagement Optimized",
+    title: "Why Are Cows Worshipped While Buffaloes Are Forgotten?🐄🤔 #chillies #podcast #animals #gaushala",
     category: "Shorts",
     videoId: "8OBEzlqxkhg",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/8OBEzlqxkhg/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 12,
-    title: "Podcast Clip – High Retention Edit",
+    title: "Smart kids schooling grownups with no fear! #podcast #sadhana #children #plantbased #zoo #aquarium",
     category: "Shorts",
     videoId: "0vNXoHaniTw",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/0vNXoHaniTw/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 13,
-    title: "Short Form Content – Viral Hook Edit",
+    title: "People on this diet live longer. #vitamin #nutrition #health #podcast #stws",
     category: "Shorts",
     videoId: "hQu80CBsYvc",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/hQu80CBsYvc/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 14,
-    title: "YouTube Shorts – Engagement Optimized",
+    title: "You Won't Believe What's Really in Your Leather! #animals #dubai #india #reality #truth #facts #ai",
     category: "Shorts",
     videoId: "FCggUrZU6wk",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/FCggUrZU6wk/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 15,
-    title: "Podcast Clip – High Retention Edit",
+    title: "Baby Chicks in Blenders? The Dark Truth #chicken #egg #food #pain #pizza #sadstatus #feel #dubai",
     category: "Shorts",
     videoId: "mKbuNIstyPM",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/mKbuNIstyPM/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 16,
-    title: "Short Form Content – Viral Hook Edit",
+    title: "Is #protein actually that important? #macros #fitness #gym #movie #superhero #telegumovie #carbs",
     category: "Shorts",
     videoId: "M5Y_K0vvTsA",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/M5Y_K0vvTsA/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 17,
-    title: "YouTube Shorts – Engagement Optimized",
+    title: "They Both Got Arrested! #london #crime #animals #model #influencer #newyork #india #funny #memes",
     category: "Shorts",
     videoId: "lOpv2kSLupk",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/lOpv2kSLupk/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 18,
-    title: "Podcast Clip – High Retention Edit",
+    title: "You Don’t Need Privilege to Do This! #nature #rich #india #growth #inspiration #motivation #care",
     category: "Shorts",
     videoId: "v5PvfXjG-Jg",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/v5PvfXjG-Jg/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 19,
-    title: "Short Form Content – Viral Hook Edit",
+    title: "Zahrah Khan on eating Seafood #sustainableteawithshreya #plantbasedliving #veganism #zahrahskhan",
     category: "Shorts",
     videoId: "3ZViAdYZQoE",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/3ZViAdYZQoE/maxresdefault.jpg",
     type: "youtube"
   },
   {
     id: 20,
-    title: "YouTube Shorts – Engagement Optimized",
+    title: "Genelia Deshmukh's Dilemma #sustainableteawithshreya #plantbasedliving #sustainability #veganism",
     category: "Shorts",
     videoId: "gxNNSCy5qzA",
+    channelName: "Sustainable Tea With Shreya",
     thumbnail: "https://img.youtube.com/vi/gxNNSCy5qzA/maxresdefault.jpg",
     type: "youtube"
-  },
-  {
-    id: 21,
-    title: "Enterprise Strategy (LinkedIn)",
-    category: "Explainers",
-    thumbnail: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1074",
-    type: "external",
-    externalUrl: "https://www.linkedin.com/posts/isthatpratham_video-editing-showreel-activity-123456789"
-  },
-  {
-    id: 22,
-    title: "Feature Film Preview (Dropbox)",
-    category: "Shorts",
-    thumbnail: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1159",
-    type: "external",
-    externalUrl: "https://www.dropbox.com/s/sample-video.mp4?dl=0"
   },
 
   // Client Work
@@ -265,9 +268,10 @@ export const editorProjects: EditorProject[] = [
   },
   {
     id: 32,
-    title: "Short Form Edit – High Engagement Cut",
+    title: "Fairexpay Travel | Unveiling soon",
     category: "Shorts",
     videoId: "sUNoPoROOdo",
+    channelName: "Fairexpay",
     thumbnail: "https://img.youtube.com/vi/sUNoPoROOdo/maxresdefault.jpg",
     type: "youtube"
   }
