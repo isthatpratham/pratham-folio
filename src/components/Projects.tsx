@@ -8,6 +8,7 @@ import artGalleryImg from '../images/art-gallery-homepage.png';
 import gitWrappedImg from '../images/GitWrapped-Homepage.png';
 import chromeImg from '../images/chrome.png';
 import yaprecapImg from '../images/yaprecap.png';
+import requestlyImg from '../images/requestly.png';
 import deadDropImg from '../images/screencapture-localhost-5173-upload-2026-07-26-03_21_46.png';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -82,12 +83,13 @@ const Projects: React.FC = () => {
     },
     {
       id: 3,
-      title: 'ArtGallery',
-      description: 'A modern digital art gallery platform where users can explore curated artwork collections through a clean and immersive interface. Built as a full-stack project with smooth browsing and elegant UI.',
-      tech: ['React', 'GSAP', 'Express', 'Supabase'],
-      image: artGalleryImg,
-      github: 'https://github.com/isthatpratham/artgallery.git',
-      live: 'https://artgallery-murex-phi.vercel.app/'
+      title: 'Requestly',
+      description: 'A focused developer workspace for public API discovery, live availability checking, server-side request execution, and integration code generation. Explore the catalog, execute requests in the Playground, inspect live HTTP responses, and organize your development APIs directly in your browser.',
+      attribution: 'public-apis/public-apis dataset',
+      tech: ['Next.js 14', 'TypeScript', 'Tailwind CSS v3', 'MongoDB Atlas'],
+      image: requestlyImg,
+      github: 'https://github.com/isthatpratham/requestly',
+      live: 'https://requestly-seven.vercel.app/'
     },
     {
       id: 4,
@@ -100,6 +102,15 @@ const Projects: React.FC = () => {
     },
     {
       id: 5,
+      title: 'ArtGallery',
+      description: 'A modern digital art gallery platform where users can explore curated artwork collections through a clean and immersive interface. Built as a full-stack project with smooth browsing and elegant UI.',
+      tech: ['React', 'GSAP', 'Express', 'Supabase'],
+      image: artGalleryImg,
+      github: 'https://github.com/isthatpratham/artgallery.git',
+      live: 'https://artgallery-murex-phi.vercel.app/'
+    },
+    {
+      id: 6,
       title: 'TabNap',
       description: 'A lightweight Chrome extension that intelligently puts inactive browser tabs to sleep to reduce memory usage and improve browser performance by replacing them with a glass-style sleep screen.',
       tech: ['JavaScript', 'Chrome Extension API', 'CSS Glassmorphism'],
@@ -108,7 +119,7 @@ const Projects: React.FC = () => {
       live: ''
     },
     {
-      id: 6,
+      id: 7,
       title: 'YapRecap',
       description: 'A privacy-first web application that transforms exported WhatsApp group chats into beautiful, animated recap stories. Inspired by modern digital yearbooks and story formats, it parses raw chat logs entirely in-browser, analyzes group metrics, and outputs a cinematic slide deck highlighting the group\'s yappers, night owls, milestones, vocabulary, and peaks.',
       tech: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Framer Motion'],
@@ -117,7 +128,7 @@ const Projects: React.FC = () => {
       live: 'https://yaprecap.vercel.app/'
     },
     {
-      id: 7,
+      id: 8,
       title: 'DeadDrop',
       description: 'DeadDrop is a secure, anonymous file drop platform for sharing files with expiring, self-destructing links. Files can be protected with passwords, limited by download count, and automatically cleaned up after expiration. The project uses a React frontend and a TypeScript + Express backend with SQLite for zero external database setup.',
       tech: ['TypeScript', 'Tailwind', 'Axios', 'Node', 'Multer', 'Vite'],
@@ -160,9 +171,23 @@ const Projects: React.FC = () => {
                 {project.title}
               </h3>
 
-              <p className="text-white/50 text-base mb-8 leading-relaxed font-light">
+              <p className="text-white/50 text-base mb-6 leading-relaxed font-light">
                 {project.description}
               </p>
+
+              {project.attribution && (
+                <div className="mb-6 text-xs text-white/40 font-light flex items-center gap-1.5 bg-white/[0.02] px-3.5 py-2 rounded-xl border border-white/5 w-fit">
+                  <span className="text-white/60 font-medium">Attribution:</span>
+                  <a
+                    href="https://github.com/public-apis/public-apis"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-white/80 transition-colors"
+                  >
+                    {project.attribution}
+                  </a>
+                </div>
+              )}
 
               <div className="flex flex-wrap gap-2.5 mb-10">
                 {project.tech.map(tech => (

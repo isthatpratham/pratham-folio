@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { X, FilmStrip, GitBranch, Scissors, MagicWand, Target, ChartLineUp, Timer, Code, Play } from '@phosphor-icons/react';
+import { X, FilmStrip, GitBranch, Scissors, MagicWand, Target, ChartLineUp, Timer, Code, Play, Star, Quotes, ArrowUpRight } from '@phosphor-icons/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -50,6 +50,53 @@ const STAT_DATA = [
     { label: 'Retention Boost', value: 8, suffix: 'x', description: 'Average increase in watch time' },
     { label: 'Videos Delivered', value: 70, suffix: '+', description: 'High-quality cinematic edits' },
     { label: 'Happy Creators', value: 16, suffix: '+', description: 'Consistent long-term partnerships' },
+];
+
+interface Testimonial {
+    id: number;
+    name: string;
+    role: string;
+    link?: string;
+    rating: number;
+    text: string[];
+}
+
+const TESTIMONIALS: Testimonial[] = [
+    {
+        id: 1,
+        name: 'Abhimanyu Karmakar',
+        role: 'Fellow Video Editor',
+        rating: 5,
+        text: [
+            "Collaborating with Pratham on post-production workflows has been an absolute pleasure. His intuitive sense for narrative pacing, seamless scene transitions, and sound design elevates every project we work on together.",
+            "What strikes me most as a fellow editor is his technical command over complex timelines and color grading under tight production schedules. He approaches every edit with creative vision and incredible attention to detail.",
+            "He is easily one of the most reliable and gifted editors I've partnered with, consistently setting a benchmark for cinematic storycrafting."
+        ]
+    },
+    {
+        id: 2,
+        name: 'Devadeep Chakravarty',
+        role: 'Polaroid Bear Studios',
+        link: 'https://www.polaroidbearstudios.com',
+        rating: 5,
+        text: [
+            "Pratham has been one of those people we at PBS know we can always count on. His sincerity, dedication, and commitment show in every project we have worked on together. What truly stands out is his ability to find solutions when things get challenging and his remarkable commitment to deadlines.",
+            "Whether it’s a complex project or an incredibly tight turnaround, Pratham has consistently stepped up and delivered. His reliability, problem-solving mindset, and genuine ownership of his work have made him an invaluable part of our journey at PBS.",
+            "We’re genuinely grateful to have someone like Pratham on our team and look forward to creating many more great projects together."
+        ]
+    },
+    {
+        id: 3,
+        name: 'Bishesh Kasera',
+        role: 'CEO, Sanvya Health',
+        link: 'https://www.sanvyahealth.com',
+        rating: 5,
+        text: [
+            "Pratham played a vital role in building Sanvya Health's visual brand identity. He transformed our complex medical workflows and healthcare features into crisp, highly engaging video presentations that resonated deeply with our audience.",
+            "His ability to grasp enterprise product requirements quickly and translate them into polished visual assets saved our team countless hours. The speed of execution and quality of polish exceeded our expectations at every stage.",
+            "If you are looking for an editor who brings genuine strategic value, speed, and creative excellence to your brand, Pratham is the partner you need."
+        ]
+    }
 ];
 
 const PROCESS_STEPS = [
@@ -141,6 +188,17 @@ const Editor: React.FC = () => {
                 }
             });
         });
+
+        gsap.fromTo('.testimonial-card',
+            { opacity: 0, y: 30 },
+            {
+                opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.testimonials-section',
+                    start: 'top 80%',
+                }
+            }
+        );
 
         gsap.fromTo('.process-step',
             { opacity: 0, y: 30 },
@@ -368,6 +426,76 @@ const Editor: React.FC = () => {
                 </div>
             </div>
 
+            {/* What Clients Say Section */}
+            <div className="testimonials-section w-full max-w-7xl mx-auto mt-32 mb-40 text-left px-6">
+                <div className="mb-20 text-center">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 text-glow">What Clients Say</h2>
+                    <p className="text-white/40 text-lg max-w-2xl mx-auto text-center">Endorsements from creators, directors, and leaders I've collaborated with.</p>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch lg:[perspective:1200px] py-6">
+                    {TESTIMONIALS.map((testimonial, index) => {
+                        const isCenter = index === 1;
+                        const isLeft = index === 0;
+
+                        return (
+                            <div
+                                key={testimonial.id}
+                                className={`testimonial-card group relative p-8 rounded-3xl backdrop-blur-xl transition-all duration-700 flex flex-col justify-between ${
+                                    isCenter
+                                        ? 'lg:scale-105 lg:-translate-y-4 z-20 border border-white/20 bg-gradient-to-b from-white/10 via-white/[0.06] to-white/5 opacity-100 shadow-[0_25px_60px_rgba(255,255,255,0.12)] hover:lg:scale-108 hover:shadow-[0_30px_70px_rgba(255,255,255,0.18)]'
+                                        : isLeft
+                                        ? 'lg:scale-95 lg:origin-right lg:[transform:rotateY(6deg)] hover:lg:[transform:rotateY(0deg)_scale(1.02)] opacity-85 hover:opacity-100 border border-white/10 bg-white/5 shadow-[0_15px_35px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_45px_rgba(255,255,255,0.06)]'
+                                        : 'lg:scale-95 lg:origin-left lg:[transform:rotateY(-6deg)] hover:lg:[transform:rotateY(0deg)_scale(1.02)] opacity-85 hover:opacity-100 border border-white/10 bg-white/5 shadow-[0_15px_35px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_45px_rgba(255,255,255,0.06)]'
+                                }`}
+                            >
+                                {isCenter && (
+                                    <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-r from-white/20 via-white/30 to-white/20 blur-xl opacity-30 group-hover:opacity-60 transition-opacity pointer-events-none -z-10" />
+                                )}
+
+                                <div>
+                                    <div className="flex items-center justify-between mb-6">
+                                        <div className="flex items-center space-x-1">
+                                            {[...Array(testimonial.rating)].map((_, i) => (
+                                                <Star key={i} size={18} weight="fill" className="text-amber-400" />
+                                            ))}
+                                        </div>
+                                        {isCenter ? (
+                                            <span className="text-[10px] uppercase font-extrabold tracking-[0.25em] text-white/90 bg-white/10 px-3 py-1 rounded-full border border-white/20 shadow-sm">
+                                                Featured
+                                            </span>
+                                        ) : (
+                                            <Quotes size={30} weight="fill" className="text-white/15 group-hover:text-white/35 transition-colors" />
+                                        )}
+                                    </div>
+                                    <div className="space-y-4 text-white/70 text-sm md:text-base leading-relaxed font-light mb-8">
+                                        {testimonial.text.map((paragraph, idx) => (
+                                            <p key={idx}>{paragraph}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="pt-6 border-t border-white/10 flex items-center justify-between mt-auto">
+                                    <div>
+                                        <h4 className="text-base font-bold text-white group-hover:text-white transition-colors">{testimonial.name}</h4>
+                                        <p className="text-xs text-white/40 font-medium">{testimonial.role}</p>
+                                    </div>
+                                    {testimonial.link && (
+                                        <a
+                                            href={testimonial.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center space-x-1 text-xs text-white/60 hover:text-white bg-white/5 hover:bg-white/10 px-3.5 py-1.5 rounded-full border border-white/10 transition-all"
+                                        >
+                                            <span>Website</span>
+                                            <ArrowUpRight size={14} />
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+
             {/* Process Section */}
             <div className="process-section w-full max-w-7xl mx-auto mt-32 mb-40 text-center px-6">
                 <div className="mb-20">
@@ -453,6 +581,7 @@ const Editor: React.FC = () => {
                                     }}
                                 />
                             </>
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         ) : (selectedProject as any)?.type === 'showreel' && (selectedProject as any)?.status === 'coming-soon' ? (
                             <div className="w-full h-full flex flex-col items-center justify-center bg-black/80 backdrop-blur-2xl relative">
                                 <div className="z-20 flex flex-col items-center p-8 animate-in fade-in zoom-in-95 duration-500">
