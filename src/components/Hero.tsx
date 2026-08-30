@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowDown, GithubLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react';
 import { gsap } from 'gsap';
-import profileImg from '../images/pf-image.png';
-import editorProfileImg from '../images/pf-image.png';
 import { Play, Eye } from '@phosphor-icons/react';
+
+const profileImg = '/Pratham Passport.png';
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
@@ -14,10 +14,8 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     // Preload persona images to prevent flickering during swap
-    [profileImg, editorProfileImg].forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
+    const img = new Image();
+    img.src = profileImg;
 
     // Initial entrance fade-in
     const entranceTimer = setTimeout(() => setIsTransitioning(false), 300);
@@ -75,7 +73,6 @@ const Hero: React.FC = () => {
         text: "Contact Me",
         action: scrollToContact
       },
-      image: profileImg,
       statusColor: "bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"
     },
     Editor: {
@@ -97,7 +94,6 @@ const Hero: React.FC = () => {
         icon: <Eye size={18} />,
         action: scrollToProjects
       },
-      image: editorProfileImg,
       statusColor: "bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"
     }
   }[activeMode];
@@ -254,18 +250,10 @@ const Hero: React.FC = () => {
               <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[450px] lg:h-[450px] p-2 rounded-full image-ring overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent z-10 pointer-events-none"></div>
 
-                {/* Developer Image */}
                 <img
                   src={profileImg}
-                  alt="Pratham Developer Profile"
-                  className={`absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] object-cover rounded-full transition-all duration-300 ease-in-out group-hover:scale-110 ${activeMode === 'Developer' ? 'opacity-100' : 'opacity-0'}`}
-                />
-
-                {/* Editor Image */}
-                <img
-                  src={editorProfileImg}
-                  alt="Pratham Editor Profile"
-                  className={`absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] object-cover rounded-full transition-all duration-300 ease-in-out group-hover:scale-110 ${activeMode === 'Editor' ? 'opacity-100' : 'opacity-0'}`}
+                  alt="Pratham Profile"
+                  className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] object-cover rounded-full transition-all duration-300 ease-in-out group-hover:scale-110"
                 />
               </div>
 

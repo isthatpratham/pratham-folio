@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
-import profileImg from '../images/Dev_Photo.jpeg';
-import editorProfileImg from '../images/Editor_Photo.png';
+
+const profileImg = '/Pratham Passport.png';
 
 const Preloader: React.FC = () => {
   useEffect(() => {
@@ -10,7 +10,6 @@ const Preloader: React.FC = () => {
     // Initial setup
     gsap.set('.preloader', { opacity: 1 });
     gsap.set('.progress-circle-fill', { strokeDashoffset: 251.3 });
-    gsap.set('.editor-img', { opacity: 0 });
     gsap.set('.main', { opacity: 0 });
 
     // Progress bar animation
@@ -19,11 +18,6 @@ const Preloader: React.FC = () => {
       duration: 2.5,
       ease: 'power2.out',
     })
-      .to('.editor-img', {
-        opacity: 1,
-        duration: 2.5,
-        ease: 'power2.out',
-      }, 0)
       .to('.preloader', {
         opacity: 0,
         scale: 0.9,
@@ -75,19 +69,12 @@ const Preloader: React.FC = () => {
           />
         </svg>
 
-        {/* Images inside the circle */}
+        {/* Profile image inside the circle */}
         <div className="w-[72px] h-[72px] rounded-full overflow-hidden relative z-10">
-          {/* Dev_Photo.jpeg */}
-          <img 
-            src={profileImg} 
-            alt="Developer persona" 
+          <img
+            src={profileImg}
+            alt="Pratham Profile"
             className="absolute inset-0 w-full h-full object-cover"
-          />
-          {/* Editor_Photo.png */}
-          <img 
-            src={editorProfileImg} 
-            alt="Editor persona" 
-            className="editor-img absolute inset-0 w-full h-full object-cover"
           />
         </div>
       </div>

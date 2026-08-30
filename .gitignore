@@ -26,3 +26,6 @@ dist-ssr
 
 # Ignore video files
 public/videos/
+
+# Local portfolio preservation archive
+Pratham Portfolio Data August 2026.zip
